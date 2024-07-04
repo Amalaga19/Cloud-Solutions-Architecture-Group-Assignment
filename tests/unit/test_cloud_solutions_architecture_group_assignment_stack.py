@@ -1,7 +1,7 @@
 import aws_cdk as core
 import aws_cdk.assertions as assertions
 
-from cloud_solutions_architecture_group_assignment.cloud_solutions_architecture_group_assignment_stack import CloudSolutionsArchitectureGroupAssignmentStack
+from csa_group_assignment.csa_group import CloudSolutionsArchitectureGroupAssignmentStack
 
 # example tests. To run these tests, uncomment this file along with the example
 # resource in cloud_solutions_architecture_group_assignment/cloud_solutions_architecture_group_assignment_stack.py

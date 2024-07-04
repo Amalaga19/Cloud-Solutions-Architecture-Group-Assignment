@@ -3,11 +3,11 @@ import os
 
 import aws_cdk as cdk
 
-from cloud_solutions_architecture_group_assignment.cloud_solutions_architecture_group_assignment_stack import CloudSolutionsArchitectureGroupAssignmentStack
+from csa_group_assignment.csa_group import CSAGroupStack
 
 
 app = cdk.App()
-CloudSolutionsArchitectureGroupAssignmentStack(app, "CloudSolutionsArchitectureGroupAssignmentStack",
+CSAGroupStack(app, "CSAGroupStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
