@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@aws-cdk/aws-lambda": "^1.204.0",
+    "@aws-cdk/aws-s3": "^1.204.0",
+    "@aws-cdk/aws-stepfunctions": "^1.204.0",
+    "@aws-cdk/aws-stepfunctions-tasks": "^1.204.0"
+  }
+}
