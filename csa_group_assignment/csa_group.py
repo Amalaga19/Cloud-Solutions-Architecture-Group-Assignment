@@ -4,6 +4,8 @@ from .s3_bucket_stack import create_s3_bucket
 from lambda_functions.lambda_helper import create_lambda_function
 from aws_cdk import aws_stepfunctions as sfn
 from aws_cdk import aws_stepfunctions_tasks as tasks
+from aws_cdk import aws_events as events
+from aws_cdk import aws_events_targets as targets
 
 class MyCdkStack(Stack):
     def __init__(self, scope: Construct, id: str, **kwargs):
@@ -37,3 +39,19 @@ class MyCdkStack(Stack):
 
             definition = start_state.next(translation_state).next(voice_generation_state)
             return sfn.StateMachine(self, "TranslationStateMachine", definition=definition)
+    def create_event_rule(scope: Construct, state_machine):
+        return events.Rule(scope, "TriggerRule",
+                       event_pattern={
+                           "source": ["aws.s3"],
+                           "detail": {
+                               "eventName": ["PutObject"],
+                               "requestParameters": {
+                                   "bucketName": ["Translations"],
+                                   "key": [{
+                                       "prefix": "!",
+                                       "anything-but": "translations/"
+                                   }]
+                               }
+                           }
+                       },
+                       targets=[targets.SfnStateMachine(state_machine)])
